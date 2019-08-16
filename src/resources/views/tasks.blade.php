@@ -14,7 +14,7 @@
 
             <!-- タスク名 -->
             <div class="form-group">
-                <label for="task" class="col-sm-3 control-label">タスク</label>
+                <label for="task" class="col-sm-3 control-label">tasklist</label>
 
                 <div class="col-sm-6">
                     <input type="text" name="name" id="task-name" class="form-control">
