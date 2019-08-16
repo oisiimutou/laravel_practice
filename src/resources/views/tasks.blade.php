@@ -47,11 +47,18 @@
                         @foreach ($tasks as $task)
                             <tr>
                                 <td class="table-text">{{$task->name}}</td>
-                                <!-- TODO: 削除ボタンを追加する　-->
-                                <td></td>
+                                <td>
+                                    <form action="{{ url('task/'.$task->id) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+
+                                        <button class="btn btn-danger" type="submit">
+                                            <i class="fa fa-trash"></i> Delete
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
-                            <td></td>
-                            @endforeach
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -1,7 +1,7 @@
 <?php
+
 use App\Task;
 use Illuminate\Http\Request;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     $tasks = Task::orderBy('created_at', 'asc')->get();
 
-    return view('tasks',[
+    return view('tasks', [
         'tasks' => $tasks
     ]);
 });
@@ -33,8 +33,13 @@ Route::post('/task', function (Request $request) {
         return redirect('/')->withInput()->withErrors($validator);
     };
 
-    $task =new Task;
+    $task = new Task;
     $task->name = $request->name;
     $task->save();
+    return redirect('/');
+});
+
+Route::delete('/task/{task}', function (Task $task) {
+    $task->delete();
     return redirect('/');
 });
